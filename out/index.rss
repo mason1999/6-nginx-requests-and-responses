@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>nginx news</title><link>http://nginx.org</link><description/><item><title>nginx-1.25.3
+mainline version has been released.
+</title><guid>http://nginx.org/#2023-10-24</guid><link>http://nginx.org/#2023-10-24</link><pubDate>Tue, 24 Oct 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-10-24<p><a href="en/download.html">nginx-1.25.3</a>
+mainline version has been released.
+</p>]]></description></item><item><title>njs-0.8.2
+version has been
+released,
+featuring the console
+object.
+</title><guid>http://nginx.org/#2023-10-24</guid><link>http://nginx.org/#2023-10-24</link><pubDate>Tue, 24 Oct 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-10-24<p><a href="en/docs/njs/index.html">njs-0.8.2</a>
+version has been
+<a href="en/docs/njs/changes.html#njs0.8.2">released</a>,
+featuring the <a href="en/docs/njs/reference.html#console">console</a>
+object.
+</p>]]></description></item><item><title>unit-1.31.1
+maintenance version has been
+released.
+</title><guid>http://nginx.org/#2023-10-19</guid><link>http://nginx.org/#2023-10-19</link><pubDate>Thu, 19 Oct 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-10-19<p><a href="https://unit.nginx.org/">unit-1.31.1</a>
+maintenance version has been
+<a href="https://unit.nginx.org/news/2023/unit-1.31.1-released/">released</a>.
+</p>]]></description></item><item><title>njs-0.8.1
+version has been
+released,
+featuring the js_periodic directive for
+http
+and
+stream.
+</title><guid>http://nginx.org/#2023-09-12</guid><link>http://nginx.org/#2023-09-12</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-09-12<p><a href="en/docs/njs/index.html">njs-0.8.1</a>
+version has been
+<a href="en/docs/njs/changes.html#njs0.8.1">released</a>,
+featuring the <code>js_periodic</code> directive for
+<a href="en/docs/http/ngx_http_js_module.html#js_periodic">http</a>
+and
+<a href="en/docs/stream/ngx_stream_js_module.html#js_periodic">stream</a>.
+</p>]]></description></item><item><title>unit-1.31.0 version has been
+released,
+featuring server-side WebAssembly and response header manipulation.
+</title><guid>http://nginx.org/#2023-08-31</guid><link>http://nginx.org/#2023-08-31</link><pubDate>Thu, 31 Aug 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-08-31<p><a href="https://unit.nginx.org/">unit-1.31.0</a> version has been
+<a href="https://unit.nginx.org/news/2023/unit-1.31.0-released/">released</a>,
+featuring server-side WebAssembly and response header manipulation.
+</p>]]></description></item><item><title>nginx-1.25.2
+mainline version has been released.
+</title><guid>http://nginx.org/#2023-08-15</guid><link>http://nginx.org/#2023-08-15</link><pubDate>Tue, 15 Aug 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-08-15<p><a href="en/download.html">nginx-1.25.2</a>
+mainline version has been released.
+</p>]]></description></item><item><title>njs-0.8.0
+version has been
+released,
+featuring shared dictionary for
+http
+and
+stream
+and global
+ngx properties.
+</title><guid>http://nginx.org/#2023-07-06</guid><link>http://nginx.org/#2023-07-06</link><pubDate>Thu, 06 Jul 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-07-06<p><a href="en/docs/njs/index.html">njs-0.8.0</a>
+version has been
+<a href="en/docs/njs/changes.html#njs0.8.0">released</a>,
+featuring shared dictionary for
+<a href="en/docs/http/ngx_http_js_module.html#js_shared_dict_zone">http</a>
+and
+<a href="en/docs/stream/ngx_stream_js_module.html#js_shared_dict_zone">stream</a>
+and global
+<a href="en/docs/njs/reference.html#ngx">ngx</a> properties.
+</p>]]></description></item><item><title>nginx-1.25.1
+mainline version has been released.
+</title><guid>http://nginx.org/#2023-06-13</guid><link>http://nginx.org/#2023-06-13</link><pubDate>Tue, 13 Jun 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-06-13<p><a href="en/download.html">nginx-1.25.1</a>
+mainline version has been released.
+</p>]]></description></item><item><title>unit community call has been
+announced
+to facilitate open discussion of new features and the future direction.
+</title><guid>http://nginx.org/#2023-06-01</guid><link>http://nginx.org/#2023-06-01</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-06-01<p><a href="https://unit.nginx.org/">unit</a> community call has been
+<a href="https://unit.nginx.org/news/2023/nginx-unit-community-call-no-1/">announced</a>
+to facilitate open discussion of new features and the future direction.
+</p>]]></description></item><item><title>nginx-1.25.0
+mainline version has been released,
+featuring experimental
+HTTP/3 support.
+</title><guid>http://nginx.org/#2023-05-23</guid><link>http://nginx.org/#2023-05-23</link><pubDate>Tue, 23 May 2023 00:00:00 +0300</pubDate><description><![CDATA[2023-05-23<p><a href="en/download.html">nginx-1.25.0</a>
+mainline version has been released,
+featuring experimental
+<a href="en/docs/http/ngx_http_v3_module.html">HTTP/3 support</a>.
+</p>]]></description></item></channel></rss>

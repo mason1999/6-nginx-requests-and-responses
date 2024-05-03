@@ -1,0 +1,10 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nginx_image
+    ports:
+      - "80:80"
+    container_name: nginx_container
+    hostname: nginx

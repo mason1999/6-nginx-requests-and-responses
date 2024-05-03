@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Модуль ngx_http_v3_module</title><style type="text/css">body { background: white; color: black; font-family: sans-serif; line-height: 1.4em; text-align: center; margin: 0; padding: 0; } #banner { background: black; color: #F2F2F2; line-height: 1.2em; padding: .3em 0; box-shadow: 0 5px 10px black; } #banner a { color: #00B140; } #main { text-align: left; margin: 0 auto; min-width: 32em; max-width: 64em; } #menu { float: right; width: 11em; padding: 0 .5em 1em .5em; border-left: 2px solid #DDD; } #content { margin-right: 13.5em; padding: 0 .2em 0 1.5em; } h1 { display: block; font-size: 3em; text-align: left; height: .7em; margin: 0; margin-bottom: .5em; } h1 img { width: 100%; } h2 { text-align: center; } p { text-align: justify; } table.news p { margin-top: 0; } table.news td { vertical-align: baseline; } table.news .date { text-align: right; padding-right: 0.5em; white-space: nowrap; } table.donors td { vertical-align: baseline; } table.donors li { text-align: left; } div.directive { background: #F2F2F2; line-height: 1em; margin: 1em 0 1em -1em; padding: .7em .7em .7em 1em; border-top: 2px solid #DDD; } div.directive th { padding-left: 0; padding-right: .5em; vertical-align: baseline; text-align: left; font-weight: normal; } div.directive td { vertical-align: baseline; } div.directive pre { padding: 0; margin: 0; } div.directive p { margin: .5em 0 0 .1em; font-size: .8em; } a.notrans { color: gray; text-decoration:none; } span.initial { font-size: 200%; float: left; padding-right: 10pt;} ul, ol { margin: .5em 0 1em 1em; padding: 0 .5em; } ol { list-style-position: inside; } li { text-align: justify; padding: .5em 0 0 1px; } .compact li { padding-top: 0; } dl { margin: .5em 0 1em 0; } dt { margin: .5em 0; } .compact dt { margin-bottom: .2em; } dd { margin-left: 1.5em; padding-left: 1px; text-align: justify; } td.list { background: #F2F2F2; } blockquote { margin: 1em 0 1em 1em; padding: .5em; } li blockquote, dd blockquote { margin: .7em 0; } blockquote.note { border: 1px dotted #999; line-height: 1.2em; text-align: justify; } blockquote.example { line-height: 1em; border-left: 1px solid #BBB; } blockquote.example pre { padding: 0; margin: 0; } sup { font-size: 50%; } .video { position: relative; padding-bottom: 56.25%; overflow: hidden; } .video iframe, .video object, .video embed { position: absolute; top:0; left:0; width:100%; height:100%; }</style><script>
+        window.addEventListener("load", function(e) {
+            fetch("../../../banner/banner.html")
+                .then((response) => response.text())
+                .then((resp) => {
+                    document.getElementById("banner").innerHTML = resp;
+                })
+                .catch((error) => {
+                    console.warn(error);
+                });
+        });
+    </script></head><body><div id="banner"></div><div id="main"><div id="menu"><h1><a href="/"><img src="/nginx.png" alt="nginx"></a></h1><div><a href="../../../en/docs/http/ngx_http_v3_module.html">english</a><br>русский<br><br><a href="../../../">новости</a> [en]<br><a href="../../../ru/">об nginx</a><br><a href="../../../ru/download.html">скачать</a><br><a href="../../../en/security_advisories.html">безопасность</a> [en]<br><a href="../../../ru/docs/">документация</a><br><a href="../../../ru/docs/faq.html">faq</a><br><a href="../../../en/books.html">книги</a> [en]<br><a href="../../../ru/support.html">поддержка</a><br><br><a href="http://trac.nginx.org/nginx">trac</a><br><a href="http://twitter.com/nginxorg">twitter</a><br><a href="https://www.nginx.com/blog/">blog</a><br><br><a href="https://unit.nginx.org/">unit</a><br><a href="../../../ru/docs/njs/">njs</a><br></div></div><div id="content"><h2>Модуль ngx_http_v3_module</h2><table width="100%"><tr><td align="left"><a href="#issues">Известные проблемы</a><br><a href="#example">Пример конфигурации</a><br><a href="#directives">Директивы</a><br>     <a href="#http3">http3</a><br>     <a href="#http3_hq">http3_hq</a><br>     <a href="#http3_max_concurrent_streams">http3_max_concurrent_streams</a><br>     <a href="#http3_stream_buffer_size">http3_stream_buffer_size</a><br>     <a href="#quic_active_connection_id_limit">quic_active_connection_id_limit</a><br>     <a href="#quic_bpf">quic_bpf</a><br>     <a href="#quic_gso">quic_gso</a><br>     <a href="#quic_host_key">quic_host_key</a><br>     <a href="#quic_retry">quic_retry</a><br><a href="#variables">Встроенные переменные</a><br></td></tr></table>
+
+<a name="summary"></a><p>
+Модуль <code>ngx_http_v3_module</code> (1.25.0) обеспечивает
+экспериментальную поддержку
+<a href="https://datatracker.ietf.org/doc/html/rfc9114">HTTP/3</a>.
+</p><p>
+По умолчанию этот модуль не собирается, его сборку необходимо
+разрешить с помощью конфигурационного параметра
+<a href="../configure.html#http_v3_module"><code>--with-http_v3_module</code></a>.
+</p> <blockquote class="note">
+Для сборки и работы этого модуля рекомендуется использовать
+библиотеку SSL с поддержкой QUIC, например
+<a href="https://boringssl.googlesource.com/boringssl">BoringSSL</a>,
+<a href="https://www.libressl.org">LibreSSL</a>,
+<a href="https://github.com/quictls/openssl">QuicTLS</a>.
+Иначе,
+при использовании библиотеки <a href="https://openssl.org">OpenSSL</a>,
+будет использоваться OpenSSL compatibility layer,
+в котором не поддерживается
+<a href="ngx_http_ssl_module.html#ssl_early_data">early data</a>.
+</blockquote><p> 
+</p>
+
+
+<a name="issues"></a><center><h4>Известные проблемы</h4></center><p>
+Модуль экспериментальный, поэтому возможно всё.
+</p>
+
+
+<a name="example"></a><center><h4>Пример конфигурации</h4></center><p>
+</p> <blockquote class="example"><pre>
+http {
+    log_format quic '$remote_addr - $remote_user [$time_local] '
+                    '"$request" $status $body_bytes_sent '
+                    '"$http_referer" "$http_user_agent" "$http3"';
+
+    access_log logs/access.log quic;
+
+    server {
+        # для лучшей совместимости рекомендуется
+        # использовать одинаковый порт для http/3 и https
+        listen 8443 quic reuseport;
+        listen 8443 ssl;
+
+        ssl_certificate     certs/example.com.crt;
+        ssl_certificate_key certs/example.com.key;
+
+        location / {
+            # используется для объявления о поддержке http/3
+            add_header Alt-Svc 'h3=":8443"; ma=86400';
+        }
+    }
+}
+</pre></blockquote><p> 
+Чтобы принимать HTTP/3-соединения по TLS, необходимо
+наличие поддержки протокола TLSv1.3, появившейся в
+<a href="http://www.openssl.org">OpenSSL</a> версии 1.1.1.
+</p>
+
+
+<a name="directives"></a><center><h4>Директивы</h4></center><a name="http3"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>http3</strong> <code>on</code> | <code>off</code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>http3 on;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Разрешает
+согласование протокола
+<a href="https://datatracker.ietf.org/doc/html/rfc9114">HTTP/3</a>.
+</p><a name="http3_hq"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>http3_hq</strong> <code>on</code> | <code>off</code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>http3_hq off;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Разрешает согласование протокола HTTP/0.9,
+используемого в
+<a href="https://github.com/marten-seemann/quic-interop-runner">функциональных
+тестах QUIC</a>.
+</p><a name="http3_max_concurrent_streams"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>http3_max_concurrent_streams</strong> <code><i>число</i></code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>http3_max_concurrent_streams 128;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Задаёт максимальное число параллельных HTTP/3-потоков
+в соединении.
+</p><a name="http3_stream_buffer_size"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>http3_stream_buffer_size</strong> <code><i>размер</i></code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>http3_stream_buffer_size 64k;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Задаёт размер буфера, используемого для чтения и записи
+QUIC-потоков.
+</p><a name="quic_active_connection_id_limit"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>quic_active_connection_id_limit</strong> <code><i>число</i></code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>quic_active_connection_id_limit 2;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Устанавливает
+значение транспортного параметра QUIC <code>active_connection_id_limit</code>.
+Это максимальное значение ID соединений,
+возможное для хранения на сервере.
+</p><a name="quic_bpf"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>quic_bpf</strong> <code>on</code> | <code>off</code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>quic_bpf off;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>main</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Разрешает маршрутизацию пакетов QUIC при помощи
+<a href="https://ebpf.io/">eBPF</a>.
+Если маршрутизация включена, то обеспечивается поддержка миграции QUIC-соединений.
+</p><p>
+</p> <blockquote class="note">
+Директива поддерживается только на Linux 5.7+.
+</blockquote><p> 
+</p><a name="quic_gso"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>quic_gso</strong> <code>on</code> | <code>off</code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>quic_gso off;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Разрешает отправку оптимизированного пакетного режима
+при помощи segmentation offloading.
+</p><p>
+</p> <blockquote class="note">
+Оптимизированная отправка поддерживается только на Linux
+с поддержкой <code>UDP_SEGMENT</code>.
+</blockquote><p> 
+</p><a name="quic_host_key"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>quic_host_key</strong> <code><i>файл</i></code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            
+            —
+        
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Задаёт <code><i>файл</i></code> с секретным ключом, применяемым при шифровании
+stateless reset и address validation токенов.
+По умолчанию создаётся случайный ключ при каждой перезагрузке.
+Токены, созданные при помощи старых ключей, не принимаются.
+</p><a name="quic_retry"></a><div class="directive"><table cellspacing="0">
+                <tr>
+                <th>
+            Синтаксис:
+                </th>
+                <td>
+            <code><strong>quic_retry</strong> <code>on</code> | <code>off</code>;</code><br>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Умолчание:
+                </th>
+                <td>
+            <pre>quic_retry off;</pre>
+                </td>
+                </tr>
+            
+                <tr>
+                <th>
+            Контекст:
+                </th>
+                <td>
+            <code>http</code>, <code>server</code><br>
+                </td>
+                </tr>
+            </table></div><p>
+Разрешает функциональность
+<a href="https://datatracker.ietf.org/doc/html/rfc9000#name-address-validation">QUIC
+Address Validation</a>,
+в том числе отправку нового токена в <code>Retry</code>-пакете
+или <code>NEW_TOKEN</code> frame
+и
+валидацию токена, полученного в <code>Initial</code>-пакете.
+</p>
+
+
+<a name="variables"></a><center><h4>Встроенные переменные</h4></center><p>
+Модуль <code>ngx_http_v3_module</code>
+поддерживает следующие встроенные переменные:
+</p> <dl>
+
+<dt id="var_http3"><code>$http3</code></dt>
+<dd>
+согласованный идентификатор протокола:
+“<code>h3</code>” для HTTP/3-соединений,
+“<code>hq</code>” для hq-соединений,
+либо пустая строка.
+</dd>
+
+</dl><p> 
+</p>
+
+</div></div></body></html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>nginx: пакеты для Linux</title><style type="text/css">body { background: white; color: black; font-family: sans-serif; line-height: 1.4em; text-align: center; margin: 0; padding: 0; } #banner { background: black; color: #F2F2F2; line-height: 1.2em; padding: .3em 0; box-shadow: 0 5px 10px black; } #banner a { color: #00B140; } #main { text-align: left; margin: 0 auto; min-width: 32em; max-width: 64em; } #menu { float: right; width: 11em; padding: 0 .5em 1em .5em; border-left: 2px solid #DDD; } #content { margin-right: 13.5em; padding: 0 .2em 0 1.5em; } h1 { display: block; font-size: 3em; text-align: left; height: .7em; margin: 0; margin-bottom: .5em; } h1 img { width: 100%; } h2 { text-align: center; } p { text-align: justify; } table.news p { margin-top: 0; } table.news td { vertical-align: baseline; } table.news .date { text-align: right; padding-right: 0.5em; white-space: nowrap; } table.donors td { vertical-align: baseline; } table.donors li { text-align: left; } div.directive { background: #F2F2F2; line-height: 1em; margin: 1em 0 1em -1em; padding: .7em .7em .7em 1em; border-top: 2px solid #DDD; } div.directive th { padding-left: 0; padding-right: .5em; vertical-align: baseline; text-align: left; font-weight: normal; } div.directive td { vertical-align: baseline; } div.directive pre { padding: 0; margin: 0; } div.directive p { margin: .5em 0 0 .1em; font-size: .8em; } a.notrans { color: gray; text-decoration:none; } span.initial { font-size: 200%; float: left; padding-right: 10pt;} ul, ol { margin: .5em 0 1em 1em; padding: 0 .5em; } ol { list-style-position: inside; } li { text-align: justify; padding: .5em 0 0 1px; } .compact li { padding-top: 0; } dl { margin: .5em 0 1em 0; } dt { margin: .5em 0; } .compact dt { margin-bottom: .2em; } dd { margin-left: 1.5em; padding-left: 1px; text-align: justify; } td.list { background: #F2F2F2; } blockquote { margin: 1em 0 1em 1em; padding: .5em; } li blockquote, dd blockquote { margin: .7em 0; } blockquote.note { border: 1px dotted #999; line-height: 1.2em; text-align: justify; } blockquote.example { line-height: 1em; border-left: 1px solid #BBB; } blockquote.example pre { padding: 0; margin: 0; } sup { font-size: 50%; } .video { position: relative; padding-bottom: 56.25%; overflow: hidden; } .video iframe, .video object, .video embed { position: absolute; top:0; left:0; width:100%; height:100%; }</style><script>
+        window.addEventListener("load", function(e) {
+            fetch("../banner/banner.html")
+                .then((response) => response.text())
+                .then((resp) => {
+                    document.getElementById("banner").innerHTML = resp;
+                })
+                .catch((error) => {
+                    console.warn(error);
+                });
+        });
+    </script></head><body><div id="banner"></div><div id="main"><div id="menu"><h1><a href="/"><img src="/nginx.png" alt="nginx"></a></h1><div><a href="../en/linux_packages.html">english</a><br>русский<br><br><a href="../">новости</a> [en]<br><a href="./">об nginx</a><br><a href="download.html">скачать</a><br><a href="../en/security_advisories.html">безопасность</a> [en]<br><a href="docs/">документация</a><br><a href="docs/faq.html">faq</a><br><a href="../en/books.html">книги</a> [en]<br><a href="support.html">поддержка</a><br><br><a href="http://trac.nginx.org/nginx">trac</a><br><a href="http://twitter.com/nginxorg">twitter</a><br><a href="https://www.nginx.com/blog/">blog</a><br><br><a href="https://unit.nginx.org/">unit</a><br><a href="docs/njs/">njs</a><br></div></div><div id="content"><h2>nginx: пакеты для Linux</h2><table width="100%"><tr><td align="left"><a href="#distributions">Поддерживаемые дистрибутивы и версии</a><br><a href="#instructions">Инструкции по установке</a><br>     <a href="#RHEL">RHEL и производные</a><br>     <a href="#Debian">Debian</a><br>     <a href="#Ubuntu">Ubuntu</a><br>     <a href="#SLES">SLES</a><br>     <a href="#Alpine">Alpine</a><br>     <a href="#Amazon-Linux">Amazon Linux</a><br><a href="#sourcepackages">Пакеты с исходным кодом</a><br><a href="#dynmodules">Динамические модули</a><br><a href="#signatures">Подписи</a><br></td></tr></table><a name="distributions"></a><center><h4>Поддерживаемые дистрибутивы и версии</h4></center><p>
+Пакеты nginx доступны для следующих дистрибутивов Linux и их
+версий:
+</p><p>
+<a href="#RHEL">RHEL и производные</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">7.4+</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">8.x</td>
+<td>x86_64, aarch64/arm64, s390x</td>
+</tr>
+
+<tr>
+<td width="30%">9.x</td>
+<td>x86_64, aarch64/arm64, s390x</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+<a href="#Debian">Debian</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">11.x “bullseye”</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">12.x “bookworm”</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+<a href="#Ubuntu">Ubuntu</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">20.04 “focal”</td>
+<td>x86_64, aarch64/arm64, s390x</td>
+</tr>
+
+<tr>
+<td width="30%">22.04 “jammy”</td>
+<td>x86_64, aarch64/arm64, s390x</td>
+</tr>
+
+<tr>
+<td width="30%">23.04 “lunar”</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+<a href="#SLES">SLES</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">12 SP5+</td>
+<td>x86_64</td>
+</tr>
+
+<tr>
+<td width="30%">15 SP2+</td>
+<td>x86_64</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+<a href="#Alpine">Alpine</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">3.15</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">3.16</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">3.17</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">3.18</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+<a href="#Amazon-Linux">Amazon Linux</a>
+
+<blockquote><table width="100%">
+
+<tr>
+<td width="30%">Версия</td>
+<td>Поддерживаемые платформы</td>
+</tr>
+
+<tr>
+<td width="30%">2 (LTS)</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+<tr>
+<td width="30%">2023</td>
+<td>x86_64, aarch64/arm64</td>
+</tr>
+
+</table></blockquote>
+</p><p>
+Пакеты для RHEL 7 и SLES 12 собраны без
+<a href="docs/http/ngx_http_v3_module.html">поддержки HTTP/3</a>,
+так как OpenSSL, используемая в этих дистрибутивах, не поддерживает TLSv1.3.
+</p><a name="instructions"></a><center><h4>Инструкции по установке</h4></center><p>
+Для того, чтобы поставить nginx на новой машине, необходимо подключить
+и настроить репозиторий пакетов nginx.
+После этого можно будет установить и обновлять nginx из этого репозитория.
+</p><a name="RHEL"></a><center><h4>RHEL и производные</h4></center><p>
+Эта секция применима к Red Hat Enterprise Linux и его производным, таким как
+CentOS, Oracle Linux, Rocky Linux, AlmaLinux.
+</p><p>
+Установите пакеты, необходимые для подключения yum-репозитория:
+</p> <blockquote class="example"><pre>
+sudo yum install yum-utils
+</pre></blockquote><p> 
+
+Для подключения yum-репозитория создайте файл с именем
+<code>/etc/yum.repos.d/nginx.repo</code>
+со следующим содержимым:
+
+</p> <blockquote class="example"><pre>
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+
+[nginx-mainline]
+name=nginx mainline repo
+baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+</pre></blockquote><p> 
+
+По умолчанию используется репозиторий для стабильной версии nginx.
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo yum-config-manager --enable nginx-mainline
+</pre></blockquote><p> 
+
+Чтобы установить nginx, выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo yum install nginx
+</pre></blockquote><p> 
+
+При запросе подтверждения GPG-ключа проверьте, что отпечаток ключа совпадает
+с <code>573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62</code>, и,
+если это так, подтвердите его.
+</p><a name="Debian"></a><center><h4>Debian</h4></center><p>
+Установите пакеты, необходимые для подключения apt-репозитория:
+</p> <blockquote class="example"><pre>
+sudo apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring
+</pre></blockquote><p> 
+</p><p>
+Теперь нужно импортировать официальный ключ,
+используемый apt для проверки подлинности пакетов.
+Скачайте ключ:
+</p> <blockquote class="example"><pre>
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null
+</pre></blockquote><p> 
+
+Проверьте, верный ли ключ был загружен:
+</p> <blockquote class="example"><pre>
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+</pre></blockquote><p> 
+
+Вывод команды должен содержать полный отпечаток ключа
+<code>573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62</code>:
+</p> <blockquote class="example"><pre>
+pub   rsa2048 2011-08-19 [SC] [expires: 2024-06-14]
+      573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+uid                      nginx signing key &lt;signing-key@nginx.com&gt;
+</pre></blockquote><p> 
+Если отпечаток отличается от вышеуказанного, удалите файл ключа.
+</p><p>
+Для подключения apt-репозитория для стабильной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/debian `lsb_release -cs` nginx" \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+</pre></blockquote><p> 
+
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду вместо предыдущей:
+</p> <blockquote class="example"><pre>
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/mainline/debian `lsb_release -cs` nginx" \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+</pre></blockquote><p> 
+</p><p>
+Для использования пакетов из нашего репозитория вместо
+распространяемых в дистрибутиве, настройте закрепление:
+</p> <blockquote class="example"><pre>
+echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
+    | sudo tee /etc/apt/preferences.d/99nginx
+</pre></blockquote><p> 
+</p><p>
+Чтобы установить nginx, выполните следующие команды:
+</p> <blockquote class="example"><pre>
+sudo apt update
+sudo apt install nginx
+</pre></blockquote><p> 
+</p><a name="Ubuntu"></a><center><h4>Ubuntu</h4></center><p>
+Установите пакеты, необходимые для подключения apt-репозитория:
+</p> <blockquote class="example"><pre>
+sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+</pre></blockquote><p> 
+</p><p>
+Теперь нужно импортировать официальный ключ,
+используемый apt для проверки подлинности пакетов.
+Скачайте ключ:
+</p> <blockquote class="example"><pre>
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null
+</pre></blockquote><p> 
+
+Проверьте, верный ли ключ был загружен:
+</p> <blockquote class="example"><pre>
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+</pre></blockquote><p> 
+
+Вывод команды должен содержать полный отпечаток ключа
+<code>573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62</code>:
+</p> <blockquote class="example"><pre>
+pub   rsa2048 2011-08-19 [SC] [expires: 2024-06-14]
+      573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+uid                      nginx signing key &lt;signing-key@nginx.com&gt;
+</pre></blockquote><p> 
+Если отпечаток отличается от вышеуказанного, удалите файл ключа.
+</p><p>
+Для подключения apt-репозитория для стабильной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+</pre></blockquote><p> 
+
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду вместо предыдущей:
+</p> <blockquote class="example"><pre>
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+</pre></blockquote><p> 
+</p><p>
+Для использования пакетов из нашего репозитория вместо
+распространяемых в дистрибутиве, настройте закрепление:
+</p> <blockquote class="example"><pre>
+echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
+    | sudo tee /etc/apt/preferences.d/99nginx
+</pre></blockquote><p> 
+</p><p>
+Чтобы установить nginx, выполните следующие команды:
+</p> <blockquote class="example"><pre>
+sudo apt update
+sudo apt install nginx
+</pre></blockquote><p> 
+</p><a name="SLES"></a><center><h4>SLES</h4></center><p>
+Установите пакеты, необходимые для подключения zypper-репозитория:
+</p> <blockquote class="example"><pre>
+sudo zypper install curl ca-certificates gpg2
+</pre></blockquote><p> 
+
+Для подключения zypper-репозитория для стабильной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo zypper addrepo --gpgcheck --type yum --refresh --check \
+    'http://nginx.org/packages/sles/$releasever_major' nginx-stable
+</pre></blockquote><p> 
+
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду вместо предыдущей:
+</p> <blockquote class="example"><pre>
+sudo zypper addrepo --gpgcheck --type yum --refresh --check \
+    'http://nginx.org/packages/mainline/sles/$releasever_major' nginx-mainline
+</pre></blockquote><p> 
+
+Теперь нужно импортировать официальный ключ, используемый zypper/rpm
+для проверки подлинности пакетов.
+Скачайте ключ:
+</p> <blockquote class="example"><pre>
+curl -o /tmp/nginx_signing.key https://nginx.org/keys/nginx_signing.key
+</pre></blockquote><p> 
+
+Проверьте, верный ли ключ был загружен:
+</p> <blockquote class="example"><pre>
+gpg --with-fingerprint /tmp/nginx_signing.key
+</pre></blockquote><p> 
+
+Вывод команды должен содержать полный отпечаток ключа
+<code>573B FD6B 3D8F BC64 1079  A6AB ABF5 BD82 7BD9 BF62</code>:
+</p> <blockquote class="example"><pre>
+pub  2048R/7BD9BF62 2011-08-19 [expires: 2024-06-14]
+      Key fingerprint = 573B FD6B 3D8F BC64 1079  A6AB ABF5 BD82 7BD9 BF62
+uid nginx signing key &lt;signing-key@nginx.com&gt;
+</pre></blockquote><p> 
+
+Импортируйте ключ в базу данных rpm:
+</p> <blockquote class="example"><pre>
+sudo rpmkeys --import /tmp/nginx_signing.key
+</pre></blockquote><p> 
+
+Чтобы установить nginx, выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo zypper install nginx
+</pre></blockquote><p> 
+</p><a name="Alpine"></a><center><h4>Alpine</h4></center><p>
+Установите пакеты, необходимые для подключения apk-репозитория:
+</p> <blockquote class="example"><pre>
+sudo apk add openssl curl ca-certificates
+</pre></blockquote><p> 
+
+Для подключения apk-репозитория для стабильной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+printf "%s%s%s%s\n" \
+    "@nginx " \
+    "http://nginx.org/packages/alpine/v" \
+    `egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release` \
+    "/main" \
+    | sudo tee -a /etc/apk/repositories
+</pre></blockquote><p> 
+
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду вместо предыдущей:
+</p> <blockquote class="example"><pre>
+printf "%s%s%s%s\n" \
+    "@nginx " \
+    "http://nginx.org/packages/mainline/alpine/v" \
+    `egrep -o '^[0-9]+\.[0-9]+' /etc/alpine-release` \
+    "/main" \
+    | sudo tee -a /etc/apk/repositories
+</pre></blockquote><p> 
+
+Теперь нужно импортировать официальный ключ, используемый apk
+для проверки подлинности пакетов.
+Скачайте ключ:
+</p> <blockquote class="example"><pre>
+curl -o /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub
+</pre></blockquote><p> 
+
+Проверьте, верный ли ключ был загружен:
+</p> <blockquote class="example"><pre>
+openssl rsa -pubin -in /tmp/nginx_signing.rsa.pub -text -noout
+</pre></blockquote><p> 
+
+Вывод команды должен содержать следующий модуль:
+</p> <blockquote class="example"><pre>
+Public-Key: (2048 bit)
+Modulus:
+    00:fe:14:f6:0a:1a:b8:86:19:fe:cd:ab:02:9f:58:
+    2f:37:70:15:74:d6:06:9b:81:55:90:99:96:cc:70:
+    5c:de:5b:e8:4c:b2:0c:47:5b:a8:a2:98:3d:11:b1:
+    f6:7d:a0:46:df:24:23:c6:d0:24:52:67:ba:69:ab:
+    9a:4a:6a:66:2c:db:e1:09:f1:0d:b2:b0:e1:47:1f:
+    0a:46:ac:0d:82:f3:3c:8d:02:ce:08:43:19:d9:64:
+    86:c4:4e:07:12:c0:5b:43:ba:7d:17:8a:a3:f0:3d:
+    98:32:b9:75:66:f4:f0:1b:2d:94:5b:7c:1c:e6:f3:
+    04:7f:dd:25:b2:82:a6:41:04:b7:50:93:94:c4:7c:
+    34:7e:12:7c:bf:33:54:55:47:8c:42:94:40:8e:34:
+    5f:54:04:1d:9e:8c:57:48:d4:b0:f8:e4:03:db:3f:
+    68:6c:37:fa:62:14:1c:94:d6:de:f2:2b:68:29:17:
+    24:6d:f7:b5:b3:18:79:fd:31:5e:7f:4c:be:c0:99:
+    13:cc:e2:97:2b:dc:96:9c:9a:d0:a7:c5:77:82:67:
+    c9:cb:a9:e7:68:4a:e1:c5:ba:1c:32:0e:79:40:6e:
+    ef:08:d7:a3:b9:5d:1a:df:ce:1a:c7:44:91:4c:d4:
+    99:c8:88:69:b3:66:2e:b3:06:f1:f4:22:d7:f2:5f:
+    ab:6d
+Exponent: 65537 (0x10001)
+</pre></blockquote><p> 
+
+Переместите ключ в каталог доверенных ключей apk:
+</p> <blockquote class="example"><pre>
+sudo mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/
+</pre></blockquote><p> 
+
+Чтобы установить nginx, выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo apk add nginx@nginx
+</pre></blockquote><p> 
+
+Тэг <code>@nginx</code> должен быть указан и при установке пакетов
+с <a href="#dynmodules">динамическими модулями</a>:
+</p> <blockquote class="example"><pre>
+sudo apk add nginx-module-image-filter@nginx nginx-module-njs@nginx
+</pre></blockquote><p> 
+</p><a name="Amazon-Linux"></a><center><h4>Amazon Linux</h4></center><p>
+Установите пакеты, необходимые для подключения yum-репозитория:
+</p> <blockquote class="example"><pre>
+sudo yum install yum-utils
+</pre></blockquote><p> 
+
+Для подключения yum-репозитория для Amazon Linux 2 создайте файл с именем
+<code>/etc/yum.repos.d/nginx.repo</code>
+со следующим содержимым:
+
+</p> <blockquote class="example"><pre>
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/amzn2/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+priority=9
+
+[nginx-mainline]
+name=nginx mainline repo
+baseurl=http://nginx.org/packages/mainline/amzn2/$releasever/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+priority=9
+</pre></blockquote><p> 
+
+Для подключения yum-репозитория для Amazon Linux 2023 создайте файл с именем
+<code>/etc/yum.repos.d/nginx.repo</code>
+со следующим содержимым:
+
+</p> <blockquote class="example"><pre>
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/amzn/2023/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+priority=9
+
+[nginx-mainline]
+name=nginx mainline repo
+baseurl=http://nginx.org/packages/mainline/amzn/2023/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+priority=9
+</pre></blockquote><p> 
+
+По умолчанию используется репозиторий для стабильной версии nginx.
+Если предпочтительно использовать пакеты для основной версии nginx,
+выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo yum-config-manager --enable nginx-mainline
+</pre></blockquote><p> 
+
+Чтобы установить nginx, выполните следующую команду:
+</p> <blockquote class="example"><pre>
+sudo yum install nginx
+</pre></blockquote><p> 
+
+При запросе подтверждения GPG-ключа проверьте, что отпечаток ключа совпадает
+с <code>573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62</code>, и,
+если это так, подтвердите его.
+</p><a name="sourcepackages"></a><center><h4>Пакеты с исходным кодом</h4></center><p>
+Исходные коды пакетов находятся в соответствующем
+<a href="http://hg.nginx.org/pkg-oss">репозитории</a>.
+</p><p>
+Ветка репозитория <code>default</code> содержит исходные коды пакетов для
+mainline-версии, в то время как ветки <code>stable-*</code> содержат
+исходные коды пакетов для стабильных релизов.
+Для сборки бинарных пакетов запустите <code>make</code> в каталоге
+<code>debian/</code> для Debian/Ubuntu, или в каталоге
+<code>rpm/SPECS/</code> для RHEL и производных, SLES, и Amazon Linux, или в каталоге
+<code>alpine/</code> для Alpine.
+</p><p>
+Исходные коды пакетов распространяются под той же
+<a href="../LICENSE">BSD-подобной лицензией из 2 пунктов</a>,
+что и сам nginx.
+</p><a name="dynmodules"></a><center><h4>Динамические модули</h4></center><p>
+Для того чтобы избежать увеличения числа зависимостей, основной пакет nginx не
+включает модули, которым требуются дополнительные библиотеки.
+Начиная с версии 1.9.11 nginx поддерживает
+<a href="docs/ngx_core_module.html#load_module">динамические
+модули</a>, и следующие модули собираются как динамические и поставляются в
+виде отдельных пакетов:
+</p> <blockquote class="example"><pre>
+nginx-module-geoip
+nginx-module-image-filter
+nginx-module-njs
+nginx-module-perl
+nginx-module-xslt
+</pre></blockquote><p> 
+</p><a name="signatures"></a><center><h4>Подписи</h4></center><p>
+Поскольку наши <a href="../en/pgp_keys.html">PGP-ключи</a>
+находятся на том же сервере, что и пакеты,
+им следует доверять в равной степени.
+Поэтому мы настоятельно рекомендуем дополнительно проверить
+подлинность загруженных PGP-ключей.
+В PGP есть понятие “сети доверия”,
+когда ключ подписывается чьим-либо другим ключом,
+тот в свою очередь третьим, и т.д.
+Это зачастую позволяет построить цепочку от произвольного ключа
+до ключа человека, которого вы знаете и кому доверяете лично,
+и таким образом удостовериться в подлинности первого ключа в цепочке.
+Подробно эта концепция описана в
+<a href="https://www.gnupg.org/howtos/en/GPGMiniHowto-1.html">
+GPG Mini Howto</a>.
+У наших ключей есть достаточное количество подписей,
+поэтому проверить их подлинность относительно несложно.
+</p></div></div></body></html>
